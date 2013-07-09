@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Addin id="EmmetPlugin" namespace="MonoDevelop.EmmetPlugin" name="Emmet"
+       author="SHTrassEr" copyright="LGPL 3" url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
+       description="Emmet plugin (for MonoDevelop 3.0). Install Node.js before using." category="Web Development" version="0.1.0">
+
+    <Dependencies>  
+        <Addin id="::MonoDevelop.Ide" version="3.0"/>  
+        <Addin id="::MonoDevelop.Core" version="3.0"/>  
+    </Dependencies>  
+    
+	<Runtime>
+	    <Import assembly="MonoDevelop.EmmetPlugin.dll" />
+	    <Import assembly="Newtonsoft.Json.dll" />
+	</Runtime>
+	
+	<Extension path="/MonoDevelop/Ide/GlobalOptionsDialog/Other">
+    	<Section id="EmmetSettings" _label="Emmet Settings" class = "MonoDevelop.EmmetPlugin.Dialogs.EmmetSettingsPanel" />
+  	</Extension>	
+
+	<Extension path = "/MonoDevelop/Ide/Commands/Edit">
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetExpandAbbreviation"  
+	        _label = "Expand abbreviations"  
+	        _description = "Expands CSS-like abbreviations into HTML/XML/CSS code, depending on current document’s syntax" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetExpandAbbreviation" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetWrapWithAbbreviation"  
+	        _label = "Wrap with abbreviations"  
+	        _description = "takes an abbreviation, expands it and places currently selected content in the last element of generated snippet" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetWrapWithAbbreviation" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetRemoveTag"  
+	        _label = "Remove tag"  
+	        _description = "Remove tag" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetRemoveTag" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetToggleComment"  
+	        _label = "Toggle comment"  
+	        _description = "Toggle comment" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetToggleComment" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectNextItem"  
+	        _label = "Select next item"  
+	        _description = "Select next item" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectNextItem" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectPreviousItem"  
+	        _label = "Select previous item"  
+	        _description = "Select previous item" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectPreviousItem" />   
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchingPair"  
+	        _label = "Matching pair"  
+	        _description = "In HTML, allows you to quickly traverse between opening and closing tag" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchingPair" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairInward"  
+	        _label = "Match pair inward"  
+	        _description = "Match pair inward" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairInward" />   		
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairOutward"  
+	        _label = "Match pair outward"  
+	        _description = "Match pair outward" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairOutward" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSplitJoinTag"  
+	        _label = "Split join tag"  
+	        _description = "Split join tag" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSplitJoinTag" />   			
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetEvaluateMathExpression"  
+	        _label = "Evaluate math expression"  
+	        _description = "Evaluate math expression" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetEvaluateMathExpression" /> 
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetNextEditPoint"  
+	        _label = "Next edit point"  
+	        _description = "Next edit point" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetNextEditPoint" /> 
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetPrevEditPoint"  
+	        _label = "Prev edit point"  
+	        _description = "Prev edit point" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetPrevEditPoint" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMergeLines"  
+	        _label = "Merge lines"  
+	        _description = "Merges selected lines into a single one. But when there’s no selection, Emmet will match context HTML tag" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMergeLines" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetReflectCssValue"  
+	        _label = "Reflect css value"  
+	        _description = "Takes value of CSS property under caret and copies it into vendor-prefixed variations with additional transformations, if required" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetReflectCssValue" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy01"  
+	        _label = "Increment number by 0.1"  
+	        _description = "Increments number under caret with steps 0.1" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy01" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy1"  
+	        _label = "Increment number by 1"  
+	        _description = "Increments number under caret with steps 1" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy1" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy10"
+	        _label = "Increment number by 10"
+	        _description = "Increments number under caret with steps 10" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy10" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy01"  
+	        _label = "Decrement number by 01"  
+	        _description = "Decrements number under caret with steps 01" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy01" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy1"  
+	        _label = "Decrement number by 1"  
+	        _description = "Decrements number under caret with steps 1" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy1" />
+		<Command id = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy10"  
+	        _label = "Decrement number by 10"  
+	        _description = "Decrements number under caret with steps 10" 
+			defaultHandler = "MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy10" />
+	</Extension>
+
+	<Extension path = "/MonoDevelop/Ide/MainMenu/Edit">  
+	    <ItemSet id="EmmetItemSet" _label="Emmet">
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetExpandAbbreviation" />  
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetWrapWithAbbreviation" />  
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetRemoveTag" />  
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetToggleComment" />  
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectNextItem" />  
+	        <CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSelectPreviousItem" />  
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairInward" />  
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchPairOutward" />  
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetSplitJoinTag" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetEvaluateMathExpression" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetNextEditPoint" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetPrevEditPoint" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMergeLines" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetMatchingPair" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetReflectCssValue" /> 
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy01" />
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy1" />
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetIncrementNumberBy10" />
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy01" />
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy1" />
+			<CommandItem id="MonoDevelop.EmmetPlugin.EmmetCommands.EmmetDecrementNumberBy10" />
+		</ItemSet>
+	</Extension>  
+</Addin>
