@@ -5,7 +5,7 @@ test-results/
 
 /src/MonoDevelop.EmmetPlugin/MonoDevelop.Emmet.*.addin.xml
 /src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin.*.csproj
-/src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin*.sln
+/src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin.*.sln
 
 .*
 !.gitignore
