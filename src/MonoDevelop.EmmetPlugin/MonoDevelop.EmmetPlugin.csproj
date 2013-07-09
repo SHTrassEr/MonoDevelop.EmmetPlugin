@@ -115,10 +115,6 @@
     <None Include="MonoDevelop.Emmet.addin.xml.orig">
       <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
     </None>
-    <None Include="MonoDevelop.Emmet.addin.xml">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EmmetCommands\" />
@@ -132,6 +128,10 @@
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonoDevelop.Emmet.addin.xml">
+      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
