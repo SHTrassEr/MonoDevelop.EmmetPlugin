@@ -1,11 +1,11 @@
 <AddinProject appVersion="3.0">
 	<Project platforms="Mac Linux">
-		<AddinFile>MonoDevelop.EmmetPlugin.dll</AddinFile>
+		<AddinFile>src/MonoDevelop.EmmetPlugin/bin/Debug/MonoDevelop.EmmetPlugin.dll</AddinFile>
 		<BuildFile>src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin.sln</BuildFile>
 		<BuildConfiguration>Debug</BuildConfiguration>
 	</Project>
 	<Project platforms="Win32">
-		<AddinFile>MonoDevelop.EmmetPlugin.dll</AddinFile>
+		<AddinFile>bin/MonoDevelop.EmmetPlugin.dll</AddinFile>
 		<BuildFile>src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin.sln</BuildFile>
 		<BuildConfiguration>DebugWin32</BuildConfiguration>
 	</Project>
