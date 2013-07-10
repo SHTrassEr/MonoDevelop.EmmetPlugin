@@ -50,14 +50,18 @@
       <Private>False</Private>
       <Package>monodevelop</Package>
     </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <Private>False</Private>
+      <Package>monodevelop</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestsInfo\HtmlTestInfo.cs" />
     <Compile Include="TestsInfo\EmmetTestInfo.cs" />
     <Compile Include="TestsInfo\InnerHtmlTestInfo.cs" />
-    <Compile Include="Integrational\ExpandAbbreviationTest.cs" />
     <Compile Include="TestsInfo\ReflectCssTestInfo.cs" />
     <Compile Include="Integrational\ReflectCssValueTest.cs" />
+    <Compile Include="Integrational\ExpandAbbreviationTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

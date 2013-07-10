@@ -21,13 +21,19 @@
 namespace MonoDevelop.EmmetPlugin.EmmetCommands
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using Mono.TextEditor;  
     using MonoDevelop.Components.Commands;
+    using MonoDevelop.EmmetPlugin.Callbacks;
     using MonoDevelop.EmmetPlugin.DataContracts;
+    using MonoDevelop.EmmetPlugin.Dialogs;
     using MonoDevelop.EmmetPlugin.EmmetCore;
     using MonoDevelop.Ide; 
     using MonoDevelop.Ide.Gui; 
-    using MonoDevelop.Ide.Gui.Content;  
+    using MonoDevelop.Ide.Gui.Content;
+    using MonoDevelop.Ide.Gui.Dialogs;
 
     /// <summary>
     /// Monodevelop command handler.
@@ -35,17 +41,22 @@ namespace MonoDevelop.EmmetPlugin.EmmetCommands
     public abstract class EmmetCommandHandler : CommandHandler
     {
         /// <summary>
+        /// The lock object.
+        /// </summary>
+        private static object lockObject = new object();
+
+        /// <summary>
         /// The emmet engine.
         /// </summary>
-        private EmmetEngine engine;
+        private static EmmetEngine engine;
 
         /// <summary>
         /// Gets the emmet engine. If there is no emmet engine, new one will be created.
         /// </summary>
         /// <value>The engine.</value>
-        private EmmetEngine Engine
+        private static EmmetEngine Engine
         {
-            get { return this.engine ?? (this.engine = new EmmetEngine()); }
+            get { return engine ?? (engine = new EmmetEngine()); }
         }
 
         /// <summary>
@@ -54,7 +65,7 @@ namespace MonoDevelop.EmmetPlugin.EmmetCommands
         /// <param name="info">Command info.</param>
         protected override void Update(CommandInfo info)  
         {  
-            MonoDevelop.Ide.Gui.Document doc = IdeApp.Workbench. ActiveDocument;  
+            MonoDevelop.Ide.Gui.Document doc = IdeApp.Workbench.ActiveDocument;  
             info.Enabled = doc != null && doc.GetContent<ITextEditorDataProvider>() != null;  
         }  
 
@@ -63,7 +74,7 @@ namespace MonoDevelop.EmmetPlugin.EmmetCommands
         /// </summary>
         protected override void Run()
         {
-            lock (this.Engine)
+            lock (lockObject)
             {
                 MonoDevelop.Ide.Gui.Document doc = IdeApp.Workbench.ActiveDocument;  
                 var textEditorData = doc.GetContent<ITextEditorDataProvider>().GetTextEditorData();  
@@ -75,7 +86,7 @@ namespace MonoDevelop.EmmetPlugin.EmmetCommands
     
                 if (this.FillContext(action.Context))
                 {
-                    var callbacks = this.Engine.Exec(action);
+                    var callbacks = this.ExecAction(action);
                     foreach (var c in callbacks)
                     {
                         c.Exec(doc.Editor);
@@ -101,5 +112,34 @@ namespace MonoDevelop.EmmetPlugin.EmmetCommands
         /// </summary>
         /// <returns>The emmet action.</returns>
         protected abstract EmmetActions GetAction();
+
+        /// <summary>
+        /// Execs the action.
+        /// </summary>
+        /// <returns>
+        /// The callbacks list.
+        /// </returns>
+        /// <param name='action'>
+        /// The emmet action.
+        /// </param>
+        private IEnumerable<IEmmetCallback> ExecAction(EmmetActionDataContract action)
+        {
+            IEnumerable<IEmmetCallback> ret;
+            try
+            {
+                ret = Engine.Exec(action);
+            } 
+            catch (System.ComponentModel.Win32Exception)
+            {
+                var errorDialog = new MultiMessageDialog();
+                var nodePath = EmmetSettingsPanel.GetNodeJSPath();
+                errorDialog.AddError(string.Format("Fails to start Node.js process by path '{0}'. Check your settings.", nodePath));
+                errorDialog.SetDefaultSize(400, 100);
+                MessageService.ShowCustomDialog(errorDialog);
+                ret = Enumerable.Empty<IEmmetCallback>();
+            }
+
+            return ret;
+        }
     }
 }

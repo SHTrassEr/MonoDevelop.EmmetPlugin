@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Addin id="EmmetPlugin" namespace="MonoDevelop.EmmetPlugin" name="Emmet"
-       author="SHTrassEr" copyright="LGPL 3" url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
-       description="Emmet plugin (for MonoDevelop 3.0). Install Node.js before using." category="Web Development" version="0.1.0">
+        author="SHTrassEr" 
+        copyright="LGPL 3" 
+        url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
+        description="Emmet plugin (for MonoDevelop 3.0). Install Node.js before using." 
+        category="Web Development" 
+        version="0.1.0">
 
     <Dependencies>  
         <Addin id="::MonoDevelop.Ide" version="3.0"/>  
         <Addin id="::MonoDevelop.Core" version="3.0"/>  
     </Dependencies>  
-    
+    <a href=""></a><a href=""></a>
     <Runtime>
         <Import assembly="MonoDevelop.EmmetPlugin.dll" />
         <Import assembly="Newtonsoft.Json.dll" />

@@ -40,9 +40,9 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
     public class EmmetEngine
     {
         /// <summary>
-        /// The custom JSON converters.
+        /// The json serializer.
         /// </summary>
-        private readonly JsonConverter[] customConverters;
+        private readonly JsonSerializer jsonSerializer;
 
         /// <summary>
         /// The nodejs process.
@@ -50,11 +50,28 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
         private Process nodeProcess;
 
         /// <summary>
+        /// Determine is process started.
+        /// </summary>
+        private bool isProcessStarted;
+
+        /// <summary>
+        /// The json text writer.
+        /// </summary>
+        private JsonTextWriter jsonTextWriter;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MonoDevelop.EmmetPlugin.EmmetCore.EmmetEngine"/> class.
         /// </summary>
         public EmmetEngine()
         {
-            this.customConverters = new[] { new EmmetEnumTypeConverter(), new EmmetEnumTypeConverter() };
+            var settings = new JsonSerializerSettings
+            {
+                Converters = new[] { new EmmetEnumTypeConverter(), new EmmetEnumTypeConverter() }
+            };
+
+            this.jsonSerializer = JsonSerializer.CreateDefault(settings);
+
+            this.isProcessStarted = false;
         }
 
         /// <summary>
@@ -65,7 +82,7 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
         {
             get
             {
-                if ((this.nodeProcess != null) && (!this.nodeProcess.HasExited))
+                if (this.isProcessStarted)
                 {
                     return this.nodeProcess;
                 }
@@ -82,13 +99,39 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
         }
 
         /// <summary>
+        /// Gets the json text writer. if there no writer, then new writer will be created.
+        /// </summary>
+        /// <value>The json text writer.</value>
+        private JsonTextWriter JsonTextWriter
+        {
+            get
+            {
+                if (this.isProcessStarted && this.jsonTextWriter != null)
+                {
+                    return this.jsonTextWriter;
+                }
+
+                if (this.jsonTextWriter != null)
+                {
+                    this.jsonTextWriter.Close();
+                }
+
+                this.jsonTextWriter = new JsonTextWriter(this.NodeProcess.StandardInput);
+                return this.jsonTextWriter;
+            }
+        }
+
+        /// <summary>
         /// Perform the specified action.
         /// </summary>
         /// <returns>The callback collection.</returns>
         /// <param name="action">The emmet action.</param>
         public IEnumerable<IEmmetCallback> Exec(EmmetActionDataContract action)
         {
-            this.NodeProcess.StandardInput.WriteLine(JsonConvert.SerializeObject(action, this.customConverters));
+            this.jsonSerializer.Serialize(this.JsonTextWriter, action);
+            this.JsonTextWriter.Flush();
+            this.NodeProcess.StandardInput.WriteLine();
+            this.NodeProcess.StandardInput.Flush();
             var r = this.NodeProcess.StandardOutput.ReadLine();
 
             if (string.IsNullOrEmpty(r))
@@ -118,7 +161,11 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
         /// <param name="emmetFullJSPath">Emmet full JS path.</param>
         private Process CreateNodeProcess(string emmetFullJSPath)
         {
+            this.isProcessStarted = false;
             var nodeProcess = new Process();
+            nodeProcess.EnableRaisingEvents = true;
+            nodeProcess.Exited += (sender, e) => this.isProcessStarted = false;
+
             var nodePath = EmmetSettingsPanel.GetNodeJSPath();
             nodeProcess.StartInfo.Arguments = string.Format(emmetFullJSPath);
 
@@ -128,7 +175,8 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
             nodeProcess.StartInfo.RedirectStandardError = false;
             nodeProcess.StartInfo.RedirectStandardInput = true;
             nodeProcess.StartInfo.StandardOutputEncoding = System.Text.Encoding.UTF8;
-            nodeProcess.Start();
+            this.isProcessStarted = nodeProcess.Start();
+            nodeProcess.StandardInput.AutoFlush = true;
             return nodeProcess;
         }
     }
