@@ -6,7 +6,7 @@ namespace MonoDevelop.EmmetPluginTests.Integrational
     using MonoDevelop.EmmetPlugin.EmmetCore;
 
     [TestFixture()]
-    public class ExpandAbbreviationTest
+    public class ReflectCssValueTest 
     {
         private EmmetEngine engine;
 
@@ -19,13 +19,7 @@ namespace MonoDevelop.EmmetPluginTests.Integrational
         [Test()]
         public void HtmlTestInfoCase()
         {
-            (new HtmlTestInfo()).RunTest(engine);
-        }
-
-        [Test()]
-        public void InnerHtmlTestInfoCase()
-        {
-            (new InnerHtmlTestInfo()).RunTest(engine);
+            (new ReflectCssTestInfo()).RunTest(engine);
         }
     }
 }
