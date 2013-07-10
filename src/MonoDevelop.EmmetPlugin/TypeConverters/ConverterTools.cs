@@ -50,7 +50,7 @@ namespace MonoDevelop.EmmetPlugin.TypeConverters
                 if (char.IsUpper(c) && currentWord.Length > 0)
                 {
                     parts.Add(currentWord.ToString());
-                    currentWord.Clear();
+                    currentWord.Length = 0;
                 }
 
                 currentWord.Append(char.ToLower(c));
@@ -71,7 +71,7 @@ namespace MonoDevelop.EmmetPlugin.TypeConverters
         /// <param name="s">Input string in snake_case format.</param>
         public static string FromSnakeCase(string s)
         {
-            var parts = s.Split(Separator[0]).Select(p => System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p));
+            var parts = s.Split(Separator[0]).Select(p => System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p)).ToArray();
             return string.Join(string.Empty, parts);
         }
     }

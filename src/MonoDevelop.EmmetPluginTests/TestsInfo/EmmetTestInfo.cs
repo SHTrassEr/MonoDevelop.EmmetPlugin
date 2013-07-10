@@ -28,8 +28,8 @@ namespace MonoDevelop.EmmetPluginTests.TestsInfo
         protected string ReadFile(string fileName, string indentationString, bool tabToSpaces)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var directory = Directory.GetParent(assembly.Location).FullName;
-            var filePath = Path.Combine(directory, TestDataDirectory, fileName);
+            var directory = Path.Combine(Directory.GetParent(assembly.Location).FullName, TestDataDirectory);
+            var filePath = Path.Combine(directory, fileName);
             var text = File.ReadAllText(filePath); 
             if (tabToSpaces)
             {

@@ -149,8 +149,8 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
         private string GetEmmetFullJSPath()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var directory = Directory.GetParent(assembly.Location).FullName;
-            var emmetPath = Path.Combine(directory, "js", "emmet-proxy.js");
+            var directory = Path.Combine(Directory.GetParent(assembly.Location).FullName, "js");
+            var emmetPath = Path.Combine(directory, "emmet-proxy.js");
             return emmetPath;
         }
 

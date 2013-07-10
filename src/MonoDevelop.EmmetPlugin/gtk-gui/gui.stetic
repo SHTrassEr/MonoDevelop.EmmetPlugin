@@ -5,8 +5,8 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="MonoDevelop.Ide, Version=2.6.0.0, Culture=neutral" />
-    <widget-library name="Mono.TextEditor, Version=1.0.0.0, Culture=neutral" />
+    <widget-library name="../../../Dependencies/monodevelop.4.0/bin/Mono.TextEditor.dll" />
+    <widget-library name="../../../Dependencies/monodevelop.4.0/bin/MonoDevelop.Ide.dll" />
     <widget-library name="../bin/Debug/MonoDevelop.EmmetPlugin.dll" internal="true" />
   </import>
   <widget class="Gtk.Dialog" id="MonoDevelop.EmmetPlugin.Dialogs.WrapWithAbbreviationDialog" design-size="400 62">
