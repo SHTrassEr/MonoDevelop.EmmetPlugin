@@ -69,7 +69,7 @@ namespace MonoDevelop.EmmetPlugin.EmmetCore
                 Converters = new[] { new EmmetEnumTypeConverter(), new EmmetEnumTypeConverter() }
             };
 
-            this.jsonSerializer = JsonSerializer.CreateDefault(settings);
+            this.jsonSerializer = JsonSerializer.Create(settings);
 
             this.isProcessStarted = false;
         }
