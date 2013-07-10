@@ -48,16 +48,16 @@
       <HintPath>..\..\Dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>..\..\Dependencies\monodevelop.3.0\ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>..\..\Dependencies\monodevelop.4.0\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="Mono.TextEditor">
-      <HintPath>..\..\Dependencies\monodevelop.3.0\Mono.TextEditor.dll</HintPath>
+      <HintPath>..\..\Dependencies\monodevelop.4.0\Mono.TextEditor.dll</HintPath>
     </Reference>
     <Reference Include="MonoDevelop.Core">
-      <HintPath>..\..\Dependencies\monodevelop.3.0\MonoDevelop.Core.dll</HintPath>
+      <HintPath>..\..\Dependencies\monodevelop.4.0\MonoDevelop.Core.dll</HintPath>
     </Reference>
     <Reference Include="MonoDevelop.Ide">
-      <HintPath>..\..\Dependencies\monodevelop.3.0\MonoDevelop.Ide.dll</HintPath>
+      <HintPath>..\..\Dependencies\monodevelop.4.0\MonoDevelop.Ide.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
