@@ -4,9 +4,9 @@
         author="SHTrassEr" 
         copyright="LGPL 3" 
         url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
-        description="Emmet plugin (for MonoDevelop 3.0). Install Node.js before using." 
+        description="Emmet plugin (for MonoDevelop 3.0). Install Node.js >=0.8.2 before using." 
         category="Web Development" 
-        version="0.1.0">
+        version="0.1.1">
 
     <Dependencies>  
         <Addin id="::MonoDevelop.Ide" version="3.0"/>  
