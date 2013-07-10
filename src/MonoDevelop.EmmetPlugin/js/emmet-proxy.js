@@ -167,6 +167,16 @@ var EditorClient = function() {
     }    
 };
 
+var editor = new EditorClient();
+process.stdin.setEncoding("utf8");
+
+var readline = require('readline');
+
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 var processAction = function(d) {
     d = d.replace(/^\s+|\s+$/g, '');
     if (!d) return;
@@ -178,12 +188,7 @@ var processAction = function(d) {
     emmet.require('actions').run(action, editor);
     console.log(JSON.stringify(editor.getOutput()));
     //console.error(JSON.stringify(editor.getOutput()));
+    rl.question("", processAction);
 };
 
-
-var editor = new EditorClient();
-process.stdin.resume();
-process.stdin.setEncoding("utf8");
-process.stdin.on("data", function(data) {
-    processAction(data)
-});
+rl.question("", processAction);

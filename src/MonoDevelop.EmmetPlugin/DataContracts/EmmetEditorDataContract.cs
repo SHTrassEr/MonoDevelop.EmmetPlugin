@@ -38,13 +38,6 @@ namespace MonoDevelop.EmmetPlugin.DataContracts
         public string FilePath { get; set; }
 
         /// <summary>
-        /// Gets or sets the content.
-        /// </summary>
-        /// <value>The content.</value>
-        [JsonProperty("content")]
-        public string Content { get; set; }
-
-        /// <summary>
         /// Gets or sets the caret offset position.
         /// </summary>
         /// <value>The caret offset position.</value>
@@ -80,6 +73,13 @@ namespace MonoDevelop.EmmetPlugin.DataContracts
         public EmmetRangeDataContract CurrentLineRange { get; set; }
 
         /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>The content.</value>
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        /// <summary>
         /// Create the EmmetEditorDataContract based on textEditorData.
         /// </summary>
         /// <returns>Emmet editor data contract</returns>
@@ -92,10 +92,12 @@ namespace MonoDevelop.EmmetPlugin.DataContracts
             
             if (textEditorData.IsSomethingSelected)
             {
+                var startSelection = textEditorData.MainSelection.GetAnchorOffset(textEditorData);
+                var endSelection = textEditorData.MainSelection.GetLeadOffset(textEditorData);
                 selectionRange = new EmmetRangeDataContract() 
                 {
-                    Start = textEditorData.MainSelection.GetAnchorOffset(textEditorData),
-                    End = textEditorData.MainSelection.GetLeadOffset(textEditorData)
+                    Start = (startSelection < endSelection) ? startSelection : endSelection,
+                    End = (startSelection > endSelection) ? startSelection : endSelection
                 };
             }
             else
