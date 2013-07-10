@@ -16,8 +16,6 @@ test-results/
 *.userprefs
 *.user
 /Makefile
-*.dll
-!/Dependencies/*.dll
 *.pdb
 *.[Cc]ache
 *~
@@ -28,3 +26,4 @@ emacs/deps
 emacs/tmp
 
 .DS_Store
+

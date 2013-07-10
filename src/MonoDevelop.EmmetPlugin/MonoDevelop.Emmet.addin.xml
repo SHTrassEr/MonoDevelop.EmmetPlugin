@@ -4,7 +4,7 @@
         author="SHTrassEr" 
         copyright="LGPL 3" 
         url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
-        description="Emmet plugin (for MonoDevelop 4.0). Install Node.js >=0.8.2 before using." 
+        description="Emmet plugin (for MonoDevelop 4.0). Install Node.js 0.8.2 or higher before using." 
         category="Web Development" 
         version="0.1.1">
 
