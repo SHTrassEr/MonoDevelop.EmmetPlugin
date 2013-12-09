@@ -40,6 +40,12 @@
     <Reference Include="gdk-sharp">
       <Package>gdk-sharp-2.0</Package>
     </Reference>
+    <Reference Include="atk-sharp">
+      <Package>atk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp">
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
     <Reference Include="Mono.Posix" />
     <Reference Include="Mono.TextEditor">
       <Private>False</Private>

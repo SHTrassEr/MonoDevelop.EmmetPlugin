@@ -18,7 +18,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace MonoDevelop.EmmetPlugin
+namespace MonoDevelop.EmmetPlugin.DataContracts
 {
     using System;
     using MonoDevelop.EmmetPlugin.Callbacks;

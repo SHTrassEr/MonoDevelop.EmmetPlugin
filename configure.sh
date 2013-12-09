@@ -31,7 +31,8 @@ searchpaths()
 
   if [ ! -f "$DIR"/$FILE ]
   then 
-    echo "Warning: File '$FILE' was not found in any of ${DIRS[@]}. Continuing anyway."
+    echo "Warning: File '$FILE' was not found in any of ${DIRS[@]}. Please enter path to monodevelop."
+    read DIR
   fi
   RESULT=$DIR
 }
@@ -45,14 +46,14 @@ searchpaths "MonoDevelop" bin/MonoDevelop.Core.dll PATHS[@]
 MDDIR=$RESULT
 echo "Successfully found MonoDevelop root directory." $MDDIR
 
-echo "Running $MDDIR/../../bin/monodevelop to determine MonoDevelop version"
+echo "Running $MDDIR/monodevelop to determine MonoDevelop version"
 
-if [  -f "$MDDIR"/../../bin/monodevelop ] 
+if [  -f "$MDDIR"/monodevelop ] 
 then 
   # e.g. 3.0.4.7
-  MDVERSION4=`$MDDIR/../../bin/monodevelop /? | head -n 1 | grep -o "[0-9]\+.[0-9]\+.[0-9]\+\(.[0-9]\+\)\?"`
+  MDVERSION4=`$MDDIR/bin/monodevelop /? | head -n 1 | grep -o "[0-9]\+.[0-9]\+.[0-9]\+\(.[0-9]\+\)\?"`
   # e.g. 3.0.4
-  MDVERSION3=`$MDDIR/../../bin/monodevelop /? | head -n 1 | grep -o "[0-9]\+.[0-9]\+.[0-9]\+"`
+  MDVERSION3=`$MDDIR/bin/monodevelop /? | head -n 1 | grep -o "[0-9]\+.[0-9]\+.[0-9]\+"`
   echo "Detected MonoDevelop version " $MDVERSION4
 else
   MDVERSION4=4.0.0.0
