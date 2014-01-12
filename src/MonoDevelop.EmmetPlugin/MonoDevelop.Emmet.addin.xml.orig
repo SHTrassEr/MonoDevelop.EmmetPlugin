@@ -2,11 +2,11 @@
 
 <Addin id="EmmetPlugin" namespace="MonoDevelop.EmmetPlugin" name="EmmetPlugin"
        author="SHTrassEr" copyright="LGPL 3" url="https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin"
-       description="Emmet plugin (for MonoDevelop INSERT_MDVERSION3). Install Node.js before using." category="Web Development" version="INSERT_VERSION">
+       description="Emmet plugin (for MonoDevelop INSERT_MDVERSION). Install Node.js before using." category="Web Development" version="INSERT_VERSION">
 
     <Dependencies>  
-        <Addin id="::MonoDevelop.Ide" version="INSERT_MDVERSION3"/>  
-        <Addin id="::MonoDevelop.Core" version="INSERT_MDVERSION3"/>  
+        <Addin id="::MonoDevelop.Ide" version="INSERT_MDVERSION"/>  
+        <Addin id="::MonoDevelop.Core" version="INSERT_MDVERSION"/>  
     </Dependencies>  
     
     <Runtime>

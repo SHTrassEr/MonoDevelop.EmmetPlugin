@@ -49,19 +49,19 @@
     <Reference Include="Mono.Posix" />
     <Reference Include="Mono.TextEditor">
       <Private>False</Private>
-      <HintPath>INSERT_MDROOT/bin/Mono.TextEditor.dll</HintPath> 
+      <HintPath>INSERT_MDROOT/Mono.TextEditor.dll</HintPath> 
     </Reference>
     <Reference Include="MonoDevelop.Ide">
       <Private>False</Private>
-      <HintPath>INSERT_MDROOT/bin/MonoDevelop.Ide.dll</HintPath> 
+      <HintPath>INSERT_MDROOT/MonoDevelop.Ide.dll</HintPath> 
     </Reference>
     <Reference Include="MonoDevelop.Core">
       <Private>False</Private>
-      <HintPath>INSERT_MDROOT/bin/MonoDevelop.Core.dll</HintPath> 
+      <HintPath>INSERT_MDROOT/MonoDevelop.Core.dll</HintPath> 
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <Private>False</Private>
-      <HintPath>INSERT_MDROOT/bin/ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>INSERT_MDROOT/ICSharpCode.NRefactory.dll</HintPath>
     </Reference>    
   </ItemGroup>
   <ItemGroup>

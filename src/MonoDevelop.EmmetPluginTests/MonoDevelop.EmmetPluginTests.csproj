@@ -38,21 +38,14 @@
       <Private>False</Private>
       <Package>gtk-sharp-2.0</Package>
     </Reference>
-    <Reference Include="MonoDevelop.Ide">
-      <Private>False</Private>
-      <Package>monodevelop</Package>
-    </Reference>
-    <Reference Include="MonoDevelop.Core">
-      <Private>False</Private>
-      <Package>monodevelop</Package>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>..\..\..\..\..\programs\monodevelop\lib\monodevelop\bin\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="Mono.TextEditor">
-      <Private>False</Private>
-      <Package>monodevelop</Package>
+      <HintPath>..\..\..\..\..\programs\monodevelop\lib\monodevelop\bin\Mono.TextEditor.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <Private>False</Private>
-      <Package>monodevelop</Package>
+    <Reference Include="Mindscape.Raygun4Net">
+      <HintPath>..\..\..\..\..\programs\monodevelop\lib\monodevelop\bin\Mindscape.Raygun4Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,27 +59,27 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="TestsData\TestInputHtml.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestsData\TestOutputHtml.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestsData\TestInputInnerHtml.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestsData\TestOutputInnerHtml.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestsData\TestInputReflectCss.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestsData\TestOutputReflectCss.html">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
