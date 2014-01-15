@@ -115,7 +115,6 @@
     </None>
     <None Include="MonoDevelop.Emmet.addin.xml.orig">
       <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MonoDevelop.Emmet.addin.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
