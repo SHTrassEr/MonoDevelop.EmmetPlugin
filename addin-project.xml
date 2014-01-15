@@ -1,6 +1,6 @@
 <AddinProject appVersion="4.0">
 	<Project>
-		<AddinFile>src/MonoDevelop.EmmetPlugin/bin/Debug/MonoDevelop.EmmetPlugin.dll</AddinFile>
+		<AddinFile>/build/bin/local/Debug/MonoDevelop.EmmetPlugin.dll</AddinFile>
 		<BuildFile>src/MonoDevelop.EmmetPlugin/MonoDevelop.EmmetPlugin.sln</BuildFile>
 		<BuildConfiguration>Debug</BuildConfiguration>
 	</Project>
