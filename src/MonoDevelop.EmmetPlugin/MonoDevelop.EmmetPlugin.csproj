@@ -106,10 +106,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="MonoDevelop.Emmet.local.addin.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
-    </None>
     <None Include="js\emmet-full.js">
       <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -121,6 +117,7 @@
       <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="MonoDevelop.Emmet.addin.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EmmetCommands\" />
